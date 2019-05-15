@@ -23,7 +23,10 @@
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.text_area :image, id: :picture_image %>
+    <%= form.file_field :image, id: :picture_image %>
+    <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url%>
+    <%= form.hidden_field :image_cache %>
+
   </div>
 
   <div class="actions">
