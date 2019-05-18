@@ -16,6 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '3.1.11'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
