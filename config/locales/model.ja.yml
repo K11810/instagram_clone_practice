@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    models:
+      picture: "ピクチャ"
+      user: "ユーザー"
+    attributes:
+      picture:
+        title: "タイトル"
+        content: "内容"
+        image: "画像"
+      user:
+        name: "名前"
+        email: "メールアドレス"
+        password: "パスワード"
+models:
