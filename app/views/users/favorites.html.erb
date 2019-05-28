@@ -1,0 +1,41 @@
+<div class="container">
+  <!-- ユーザー詳細/上部 -->
+  <div class="user-show">
+    <div class="user-image">
+      <% if @user.user_image? %>
+        <%= image_tag @user.user_image.url %>
+      <% else %>
+        <%= image_tag("/user_images/default_user.jpg") %>
+      <% end %>
+    </div>
+
+    <div class="user-detail">
+      <h3><%= @user.name %></h3>
+      <p><%= @user.email %></p>
+      <% if current_user.id == @user.id %>
+        <p><%= link_to 'Edit', edit_user_path(@user) %></p>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- ユーザー投稿一覧/お気に入りリンク -->
+  <div class="user-tab">
+    <ul class="user-tabs">
+      <li><%= link_to "Posts Index", user_path(@user.id) %></li>
+      <li class="active"><%= link_to "Favorites", "/users/#{@user.id}/favorites" %></li>
+      <li><%= link_to "New Post", new_picture_path %></li>
+    </ul>
+  </div>
+
+  <!-- お気に入り投稿一覧 -->
+  <div class="posts-index">
+    <ul class="row">
+      <% @favorites.each do |favorite| %>
+        <% picture = Picture.find_by(id: favorite.picture_id) %>
+        <li class="col-md-4 col-sm-6">
+          <%= link_to picture.title, picture %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,6 +1,24 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:edit,:update,:show]
+  before_action :set_picture, only: [:edit, :update]
+
+  def index
+    @users = User.all
+  end
+
+  def edit
+  end
+
   def new
    @user = User.new
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to user_path, notice: 'ユーザプロフィールが編集されました'
+    else
+      render "edit"
+    end
   end
 
   def create
@@ -17,11 +35,20 @@ class UsersController < ApplicationController
   end
 
 
+  def favorites
+    @user = User.find_by(id: params[:id])
+    @favorites = Favorite.where(user_id: @user.id)
+  end
+
+
   private
 
+   def set_user
+     @user = User.find(params[:id])
+   end
+
    def user_params
-     params.require(:user).permit(:name, :email, :password,
-                                 :password_confirmation)
+     params.require(:user).permit(:name,:email,:password,:password_confirmation,:user_image,:user_image_cache)
    end
 
 end
