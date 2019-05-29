@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit,:update,:show]
   before_action :set_picture, only: [:edit, :update]
+  before_action :authenticate_user, only: [:edit,:update,:show,:index, :favorites]
+  before_action :forbid_login_user, only: [:new,:create]
+  before_action :ensure_correct_user, only: [:edit,:update]
 
   def index
     @users = User.all

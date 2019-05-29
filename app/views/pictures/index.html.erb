@@ -16,13 +16,9 @@
   <tbody>
     <% @pictures.each do |picture| %>
       <tr>
-        <td><%= picture.user.name %></td>
-        <td><%= picture.title %></td>
-        <td><%= picture.content %></td>
-        <td><%= picture.image %></td>
-        <td><%= link_to 'Show', picture %></td>
-        <td><%= link_to 'Edit', edit_picture_path(picture) %></td>
-        <td><%= link_to 'Destroy', picture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to(picture.user.name, user_path(picture.user.id)) %></td>
+        <td><%= link_to(picture.title, picture_path(picture.id)) %>
+        <td><%= link_to(picture.content, picture_path(picture.id)) %>
       </tr>
     <% end %>
   </tbody>
