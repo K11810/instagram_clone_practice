@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  root 'users#new'
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   resources :favorites, only: [:create, :destroy]
 

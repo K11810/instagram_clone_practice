@@ -2,7 +2,7 @@ class PicturesController < ApplicationController
   before_action :authenticate_user
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit,:update,:destroy]
-  
+
 
   def index
     @pictures = Picture.all
@@ -31,7 +31,7 @@ class PicturesController < ApplicationController
     respond_to do |format|
       if @picture.save
         ContactMailer.contact_mail(@picture).deliver
-        
+
         format.html { redirect_to pictures_path, notice: 'Picture was successfully created.' }
         format.json { render :show, status: :created, location: @picture }
       else
@@ -71,7 +71,8 @@ class PicturesController < ApplicationController
 
   private
 
-    def picture_params
-      params.require(:picture).permit(:title, :content, :image, :image_cache)
-    end
+  def picture_params
+    params.require(:picture).permit(:title, :content, :image, :image_cache)
+  end
+
 end
