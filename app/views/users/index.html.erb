@@ -1,24 +1,32 @@
-<h1>Users</h1>
+<div class="main">
+  <div class="article">
+    <div class="picrure_title">
+      <h1>ユーザ一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>User image</th>
-    </tr>
-  </thead>
+    <div class="picture_main_container">
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>User image</th>
+          </tr>
+        </thead>
 
-  <tbody>
+        <tbody>
 
-   <% @users.each do |user| %>
-    <tr>
-        <td><%= link_to(user.name, user_path(user.id)) %></td>
-          <% if user.user_image? %>
-            <td><%= image_tag user.user_image.url %>
-          <% else %>
-            <td><%= image_tag "/user_images/default_user.jpg" %>
-          <% end %>
-    </tr>
-   <% end %>
-  </tbody>
-</table>
+         <% @users.each do |user| %>
+          <tr>
+              <td><%= link_to(user.name, user_path(user.id)) %></td>
+                <% if user.user_image? %>
+                  <td><%= image_tag user.user_image.url, size: "75x50" %>
+                <% else %>
+                  <td><%= image_tag "/user_images/default_user.jpg", size: "75x50" %>
+                <% end %>
+          </tr>
+         <% end %>
+        </tbody>
+      </table>
+     </div>
+    </div>
+  </div>
+</div>

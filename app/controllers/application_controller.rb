@@ -17,16 +17,15 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def set_picture
+      @picture = Picture.find(params[:id])
+    end
 
     # ログインユーザのみ投稿の編集・削除許可
     def ensure_correct_user
-      if current_user.id != @picture.user_id
+      if current_user.id != params[:id].to_i
         redirect_to pictures_path, notice: "権限がありません"
       end
-    end
-  
-    def set_picture
-      @picture = Picture.find(params[:id])
     end
 
 
