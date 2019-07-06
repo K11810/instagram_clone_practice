@@ -1,36 +1,45 @@
-<p>
-  <strong>contributor:</strong>
-  <%= link_to @picture.user.name, user_path%>
-</p>
+<div class="main">
+  <div class="article">
+    <div class="picrure_title">
+      <h1>投稿詳細</h1>
+    </div>
+    <div class="picture_main_container">
+      <p>
+        <strong>投稿者:</strong>
+        <%= link_to @picture.user.name, user_path%>
+      </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @picture.title %>
-</p>
+      <p>
+        <strong>タイトル:</strong>
+        <%= @picture.title %>
+      </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @picture.content %>
-</p>
+      <p>
+        <strong>本文:</strong>
+        <%= @picture.content %>
+      </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= image_tag @picture.image.url %>
-</p>
+      <p>
+        <strong>画像:</strong>
+        <%= image_tag @picture.image.url %>
+      </p>
 
 
-<% unless @picture.user_id == current_user.id %>
-  <% if @favorite.present? %>
-    <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
+      <% unless @picture.user_id == current_user.id %>
+        <% if @favorite.present? %>
+          <%= link_to 'お気に入り解除する', favorite_path(id: @favorite.id), method: :delete, class: 'btn btn-danger' %>
 
-  <% else %>
-    <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
-  <% end %>
-<% end %>
+        <% else %>
+          <%= link_to 'お気に入りする', favorites_path(picture_id: @picture.id), method: :post, class: 'btn btn-primary' %>
+        <% end %>
+      <% end %>
 
-<% if @picture.user_id == @current_user.id %>
-  <%= link_to 'Edit', edit_picture_path(@picture) %> |
-  <%= link_to 'destroy', picture_path(@picture), method: :delete, data: { confirm: 'Are you sure to delete your post?' } %>
-<% end %>
+      <% if @picture.user_id == @current_user.id %>
+        <%= link_to '投稿を編集する', edit_picture_path(@picture) %> |
+        <%= link_to '投稿を削除する', picture_path(@picture), method: :delete, data: { confirm: 'Are you sure to delete your post?' } %> |
+      <% end %>
 
-<%= link_to 'Back', pictures_path %>
+      <%= link_to '投稿一覧へ戻る', pictures_path %>
+   </div>
+  </div>
+</div>

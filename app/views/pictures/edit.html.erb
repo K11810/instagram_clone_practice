@@ -1,6 +1,13 @@
-<h1>Editing Picture</h1>
+<div class="main">
+  <div class="article">
+    <div class="picrure_title">
+      <h1>投稿編集</h1>
+    </div>
+    <div class="picture_main_container">
+      <%= render 'form', picture: @picture %>
 
-<%= render 'form', picture: @picture %>
-
-<%= link_to 'Show', @picture %> |
-<%= link_to 'Back', pictures_path %>
+      <%= link_to '投稿詳細に戻る', @picture %> |
+      <%= link_to '投稿一覧に戻る', pictures_path %>
+    </div>
+   </div>
+ </div>

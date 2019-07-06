@@ -12,31 +12,25 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name, id: :user_name %>
+    <%= f.text_field :email, id: :user_email, placeholder: "メールアドレス" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email, id: :user_email %>
+    <%= f.text_field :name, id: :user_name, placeholder: "ユーザーネーム" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, name: "user[password]", placeholder: "Please enter the password" %>
+    <%= f.password_field :password, name: "user[password]", placeholder: "パスワード" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password, name: "user[password_confirmation]", placeholder: "password_confirmation" %>
+    <%= f.password_field :password, name: "user[password_confirmation]", placeholder: "パスワード(確認用)" %>
   </div>
 
   <div class="field">
-    <%= f.label :user_image %>
     <%= f.file_field :user_image, id: :user_image %>
     <%= image_tag(@user.user_image.url) if @user.user_image && @user.user_image.url%>
     <%= f.hidden_field :image_cache %>
-
   </div>
 
   <div class="actions">

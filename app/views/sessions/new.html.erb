@@ -1,12 +1,22 @@
-<h1>Log in</h1>
+<div class="main">
+  <div class="article">
+    <div class="login_container">
+      <div class="login_form_container">
+        <div class="login_form_title">
+          <p>Instagramclone</p>
+        </div>
+        <div class="login_form_main_container">
+          <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+            <%= f.email_field :email, placeholder: "メールアドレス" %>
+            <%= f.password_field :password, placeholder: "パスワード" %>
+            <%= f.submit "ログイン" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="to_session_container">
+        <p>アカウントをお持ちではないですか？　<%= link_to "登録する", root_path %> </p>
+      </div>
 
-<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-
-  <%= f.submit "Log in" %>
-<% end %>
+    </div>
+  </div>
+</div>

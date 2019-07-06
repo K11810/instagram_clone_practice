@@ -1,16 +1,15 @@
 <div class="container">
   <!-- ユーザー詳細/上部 -->
   <div class="user-show">
-    <div class="user-image">
-      <% if @user.user_image? %>
-        <%= image_tag @user.user_image.url %>
-      <% else %>
-        <%= image_tag("/user_images/default_user.jpg") %>
-      <% end %>
-    </div>
-
     <div class="user-detail">
       <h3><%= @user.name %></h3>
+      <div class="user-image">
+        <% if @user.user_image? %>
+          <%= image_tag @user.user_image.url, size: "210x210" %>
+        <% else %>
+          <%= image_tag("/user_images/default_user.jpg", size: "210x210") %>
+        <% end %>
+      </div>
       <p><%= @user.email %></p>
       <% if current_user.id == @user.id %>
         <p><%= link_to 'Edit', edit_user_path(@user) %></p>
@@ -21,9 +20,9 @@
   <!-- ユーザー投稿一覧/お気に入りリンク -->
   <div class="user-tab">
     <ul class="user-tabs">
-      <li><%= link_to "Posts Index", user_path(@user.id) %></li>
-      <li class="active"><%= link_to "Favorites", "/users/#{@user.id}/favorites" %></li>
-      <li><%= link_to "New Post", new_picture_path %></li>
+      <li><%= link_to "投稿一覧", user_path(@user.id) %></li>
+      <li class="active"><%= link_to "お気に入り投稿一覧", "/users/#{@user.id}/favorites" %></li>
+      <li><%= link_to "新規投稿", new_picture_path %></li>
     </ul>
   </div>
 

@@ -1,17 +1,25 @@
-<h3>以下の内容で、送信する。</h3>
+<div class="main">
+  <div class="article">
+    <div class="picrure_title">
+      <h3>以下の内容で、送信する。</h3>
+    </div>
+    <div class="picture_main_container">
+      <%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
+        <%= form.hidden_field :title %>
+        <%= form.hidden_field :content %>
 
-<%= form_with(model: @picture, url: pictures_path, local: true) do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
+        <p>Content:<%= @picture.content %></p>
+        <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+        <%= form.hidden_field :image_cache %>
+        <%= form.submit  "投稿する" %>
+      <% end %>
 
-  <p>Content:<%= @picture.content %></p>
-  <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
-  <%= form.hidden_field :image_cache %>
-  <%= form.submit  "投稿する" %>
-<% end %>
-
-<%= form_with(model: @picture, url: new_picture_path, local: true, method: 'get') do |form| %>
-  <%= form.hidden_field :title %>
-  <%= form.hidden_field :content %>
-  <%= form.submit "もどる", name: 'back' %>
-<% end %>
+      <%= form_with(model: @picture, url: new_picture_path, local: true, method: 'get') do |form| %>
+        <%= form.hidden_field :title %>
+        <%= form.hidden_field :content %>
+        <%= form.hidden_field :image_cache %>
+        <%= form.submit "もどる", name: 'back' %>
+      <% end %>
+    </div>
+  </div>
+</div>
