@@ -18,7 +18,7 @@
             <tr>
               <td><%= link_to(picture.user.name, user_path(picture.user.id)) %></td>
               <td><%= link_to(picture.title, picture_path(picture.id)) %></td>
-              <td><%= image_tag picture.image.url, size: "75x50" %></td>
+              <td><%= link_to image_tag(picture.image_url(:thumb)), picture %></td>
             </tr>
           <% end %>
         </tbody>
