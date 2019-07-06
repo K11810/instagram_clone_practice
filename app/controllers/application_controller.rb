@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
 
-
     # ログインしていないユーザによるアクセスを禁ずる
     def authenticate_user
       if current_user == nil
@@ -17,13 +16,9 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def set_picture
-      @picture = Picture.find(params[:id])
-    end
-
     # ログインユーザのみ投稿の編集・削除許可
     def ensure_correct_user
-      if current_user.id != params[:id].to_i
+      if current_user.id != @picture.user_id
         redirect_to pictures_path, notice: "権限がありません"
       end
     end

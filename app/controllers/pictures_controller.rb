@@ -27,11 +27,9 @@ class PicturesController < ApplicationController
 
   def create
     @picture = current_user.pictures.build(picture_params)
-
     respond_to do |format|
       if @picture.save
         ContactMailer.contact_mail(@picture).deliver
-
         format.html { redirect_to pictures_path, notice: 'Picture was successfully created.' }
         format.json { render :show, status: :created, location: @picture }
       else
@@ -70,7 +68,6 @@ class PicturesController < ApplicationController
 
 
   private
-
   def picture_params
     params.require(:picture).permit(:title, :content, :image, :image_cache)
   end
