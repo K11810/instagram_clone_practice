@@ -22,6 +22,4 @@ class ApplicationController < ActionController::Base
         redirect_to pictures_path, notice: "権限がありません"
       end
     end
-
-
 end

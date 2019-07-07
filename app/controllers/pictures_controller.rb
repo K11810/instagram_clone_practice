@@ -3,7 +3,6 @@ class PicturesController < ApplicationController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
   before_action :ensure_correct_user, only: [:edit,:update,:destroy]
 
-
   def index
     @pictures = Picture.all
   end
@@ -20,10 +19,8 @@ class PicturesController < ApplicationController
     end
   end
 
-
   def edit
   end
-
 
   def create
     @picture = current_user.pictures.build(picture_params)
@@ -39,7 +36,6 @@ class PicturesController < ApplicationController
     end
   end
 
-
   def update
     respond_to do |format|
       if @picture.update(picture_params)
@@ -51,7 +47,6 @@ class PicturesController < ApplicationController
       end
     end
   end
-
 
   def destroy
     @picture.destroy
@@ -65,7 +60,6 @@ class PicturesController < ApplicationController
     @picture = current_user.pictures.build(picture_params)
     render :new if @picture.invalid?
   end
-
 
   private
   def picture_params
